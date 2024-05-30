@@ -85,70 +85,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="modal fade" id="addProductModal" tabindex="-1" role="dialog" aria-labelledby="addProductModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+<section class="transaction section" id="transaction">
+
+          <div class="title-product">
+            <h1>Transactions</h1>
           </div>
-          <div class="modal-body">
-            <form method="post" enctype="multipart/form-data">
-              <div class="mb-3">
-                <label for="productImage" class="form-label">Product Image</label>
-                <div class="input-group">
-                  <input type="file" class="form-control d-none" id="productImage" aria-describedby="inputGroupFileAddon" onchange="previewImage()" name="productImage">
-                  <label class="input-group-text" for="productImage">
-                    <i class="bx bx-image" style="font-size: 1.5rem;"></i>
-                  </label>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-7">
+
+                <!-- Calculate the Income -->
+                <div class="income">
+
+                  <h3>Income</h3>
+                  <h4 class="increase">+ ₱5,000</h4>
+
+                  <!-- Selection of Date to view Income -->
+
+                </div>
+
+                <!-- Transaction of the Customer -->
+                <div class="transactions">
+                  <div class="trans-head">
+                    <h3>Transaction</h3>
+
+                    <!-- Selection of Date to view Transaction -->
+
+                  </div>
+
+                  <!-- Table for Transaction -->
+
+                  <div class="table-trans">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Customer Number</td>
+                          <td>Payment Method</td>
+                          <td>Price</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="col-md-5">
+                <div class="order-recent">
+                  <h2>Recent Purchase</h2>
+
+                  <!-- Recent Purchases -->
+                  <div class="recent-pur">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Product</th>
+                          <th>Customer Numer</th>
+                          <th>Date</th>
+                          <th>Price</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Oil</td>
+                          <td>#563927</td>
+                          <td>5/24/2023</td>
+                          <td>₱1500</td>
+                          <td><span class="text-success">Success</span></td>
+                        </tr>
+                        <tr>
+                          <td>Tail Light</td>
+                          <td>#123453</td>
+                          <td>5/18/2023</td>
+                          <td>₱2500</td>
+                          <td><span class="text-danger">Failed</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- paginationHTMl insert Here -->
+
                 </div>
               </div>
-              <div class="mb-3">
-                <img id="preview" src="#" alt="Preview Image" style="max-width: 150px; display: none;">
-              </div>
-              <div class="mb-3">
-                <label for="productBrand" class="form-label">Brand</label>
-                <input type="text" class="form-control" id="productBrand" name="productBrand">
-              </div>
-
-              <div class="mb-3">
-                <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" name="productName">
-              </div>
-              
-              <div class="mb-3">
-                <label for="productCategory" class="form-label">Category</label>
-                <select class="form-select" id="productCategory" name="productCategory">
-                  <option value="selected">Select Category </option>
-                  <?php 
-                    $category = $con->viewCat();
-                    foreach($category as $cat){
-                  ?>
-                  <option value="<?php echo $cat['cat_id'];?>"><?php echo $cat['Cat_Type'];?></option>
-                  <?php 
-                    }
-                  ?>
-                </select>
-              </div>
-        
-
-              <div class="mb-3">
-                <label for="productQuantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="productQuantity" name="productQuantity">
-              </div>
-              <div class="mb-3">
-                <label for="productPrice" class="form-label">Price</label>
-                <input type="text" class="form-control" id="productPrice" name="productPrice">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" name="addproduct">Add Product</button>
-              </div>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+
+        </section>
+
+        <!-- Stock Section -->
+
+        <section class="stock section" id="stock">
+
+          <div class="title-product">
+            <h1>Stocks</h1>
+          </div>
+
+          <div class="stocks">
+
+              <div class="stockhead">
+                <div class="search-cat">
+                  <div class="search-bar">
+                    <input type="text" class="form-control" placeholder="Search products...">
+                  </div>
+                  <div class="stock-category">
+                    <label for="stockCategory" class="form-label">Category</label>
+                    <select class="form-select" id="stockCategory">
+                        <option value="0">Select Category</option>
+                  
+        
+                        <option value="1">Auto Parts</option>
+                        <option value="2">Oil/Fluids</option>
+                        <option value="3">Car Accessories</option>
+                       
+                    </select>
+                  </div>
+                </div>
+              </div>
+                <div class="addproduct">
+                  <button class="button" data-toggle="modal" data-target="#addProductModal"><i class="bx bx-plus" style="font-size: 35px;"></i>Add Product</button>
+                </div>
+          
+
+            <div class="productcardview">
+            <div class="container-fluid my-3">
+                <div class="card-container">
+                    <?php
+                    $data = $con->viewProducts();
+                    foreach ($data as $rows) {
+                    ?>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <?php if (!empty($rows['item_page'])): ?>
+                                <img src="<?php echo htmlspecialchars($rows['item_image']); ?>" alt="Profile Picture" class="profile-img">
+                            <?php else: ?>
+                                <img src="path/to/default/profile/pic.jpg" alt="Default Profile Picture" class="profile-img">
+                            <?php endif; ?>
+                            <h5 class="card-title"><?php echo htmlspecialchars($rows['product_brand']); ?></h5>
+                            <p class="card-text"> <?php echo htmlspecialchars($rows['product_name']); ?></p>
+                            <p class="card-text"><?php echo htmlspecialchars($rows['price']); ?></p>
+                            <p class="card-text"><?php echo htmlspecialchars($rows['stocks']); ?></p>
+                            <form action="update.php" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($rows['product_id']); ?>">
+                                <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                            </form>
+                            <form method="POST" class="d-inline">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($rows['product_id']); ?>">
+                                <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">
+                            </form>
+                        </div>
+                    </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            </div>
+
+            <!-- paginationHTML insert Here -->
+
+          </div>
+
+        </section>
 </body>
 </html>

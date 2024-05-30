@@ -9,14 +9,13 @@ class database{
   
     function addProduct($product_category, $product_brand, $product_name, $product_quantity, $product_price, $product_image_path){ 
         $con = $this->opencon();
-        $stmt = $con->prepare("INSERT INTO product (cat_id, product_brand, product_name, price, stocks, item_image) VALUES (?,?,?,?,?,?)");
-        $stmt->execute([$product_category, $product_brand, $product_name, $product_quantity, $product_price, $product_image_path]);
+        $stmt = $con->prepare("INSERT INTO product (cat_id, product_brand, product_name, price, stocks, item_image) VALUES (?,?,?,?,?,?)")->execute([$product_category, $product_brand, $product_name, $product_quantity, $product_price, $product_image_path]);
         
         // Get the ID of the last inserted row
-        $last_id = $con->lastInsertId();
+        // $last_id = $con->lastInsertId();
 
         // Return the last inserted ID
-        return $last_id;
+        // return $last_id;
     }
     function viewCat(){
     $con = $this->opencon();

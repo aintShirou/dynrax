@@ -395,7 +395,7 @@
           
 
             <div class="productcardview">
-            <div class="container my-2">
+            <div class="container-fluid my-3">
                 <div class="card-container">
                     <?php
                     $data = $con->viewProducts();
@@ -413,11 +413,11 @@
                             <p class="card-text"><?php echo htmlspecialchars($rows['price']); ?></p>
                             <p class="card-text"><?php echo htmlspecialchars($rows['stocks']); ?></p>
                             <form action="update.php" method="post" class="d-inline">
-                                <!-- <input type="hidden" name="id" value="<?php echo htmlspecialchars($rows['user_id']); ?>"> -->
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($rows['product_id']); ?>">
                                 <button type="submit" class="btn btn-primary btn-sm">Edit</button>
                             </form>
                             <form method="POST" class="d-inline">
-                                <!-- <input type="hidden" name="id" value="<?php echo htmlspecialchars($rows['user_id']); ?>"> -->
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($rows['product_id']); ?>">
                                 <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">
                             </form>
                         </div>
